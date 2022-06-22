@@ -10,8 +10,8 @@ const Login = (props) => {
   const navigate = useNavigate;
   const { loginCbHandler } = props;
   const [form, setForm] = useState({
-    user_email: "",
-    user_password: "",
+    username: "",
+    password: "",
   });
 
   const loginUser = async () => {
@@ -55,19 +55,19 @@ const Login = (props) => {
                     <div className="form-group">
                       <input
                         onChange={(e) =>
-                          setForm({ ...form, user_email: e.target.value })
+                          setForm({ ...form, username: e.target.value })
                         }
-                        type="email"
+                        type="username"
                         className="form-control form-control-user"
-                        id="exampleInputEmail"
+                        id="exampleInputUsername"
                         aria-describedby="emailHelp"
-                        placeholder="Enter Email Address..."
+                        placeholder="Enter Username..."
                       />
                     </div>
                     <div className="form-group">
                       <input
                         onChange={(e) =>
-                          setForm({ ...form, user_password: e.target.value })
+                          setForm({ ...form, password: e.target.value })
                         }
                         type="password"
                         className="form-control form-control-user"
