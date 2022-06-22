@@ -18,12 +18,13 @@ class jobsController {
     try {
       let description = req.query.description;
       let location = req.query.location;
+      let type = req.query.type;
       let getJobsByWord = await axios({
         method: "GET" + "?",
         url: URL,
       });
 
-      res.status(200).json(getJobsByWord[(description, location)]);
+      res.status(200).json(getJobsByWord[(description, location, type)]);
     } catch (error) {
       res.status(500).json(error);
     }
