@@ -29,15 +29,14 @@ class jobsController {
         },
       });
 
-      // res.status(200).json(getJobsByWord[(description, location, type)]);
-      // if (getJobsByWord) {
-
-      //   res.status(200).json(getJobsByWord);
-      // }else{
-      //   res.status(200).json({
-      //     message: "Not Found"
-      //   });
-      // }
+      res.status(200).json(getJobsByWord[(description, location, type)]);
+      if (getJobsByWord) {
+        res.status(200).json(getJobsByWord);
+      } else {
+        res.status(200).json({
+          message: "Not Found",
+        });
+      }
       res.status(200).json(getJobsByWord.params);
     } catch (error) {
       // console.log(error);

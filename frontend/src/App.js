@@ -1,10 +1,12 @@
 import React from "react";
 import "./App.css";
 
+import Login from './components/Login/index'
+
 function App() {
   return (
     <div className="container-fluid">
-      <h1>Test</h1>
+      <Login></Login>
     </div>
   );
 }
