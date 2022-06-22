@@ -1,5 +1,3 @@
-
-
 class jobsController {
   static async getJobs(req, res) {
     try {
