@@ -1,8 +1,12 @@
 const jobsRoute = require("express").Router();
-const jobsController = require("../controller/jobsController")
+const jobsController = require("../controller/jobsController");
 
-jobsRoute.get('/list',jobsController.getListJobs)
-jobsRoute.get('/findByWord',jobsController.getJobsByWord)
+const authentication = require("../middleware/tokenMiddleWare");
 
+jobsRoute.get("/list", authentication, jobsController.getListJobs);
+jobsRoute.get("/", jobsController.getJobsByWord);
 
-module.exports =jobsRoute
+jobsRoute.get("/page", authentication, jobsController.getPageJobs);
+jobsRoute.get("/:id", authentication, jobsController.getPositionById);
+
+module.exports = jobsRoute;
