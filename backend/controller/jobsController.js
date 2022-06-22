@@ -1,10 +1,16 @@
+const axios = require("axios");
+const URL = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json";
 class jobsController {
-  static async getJobs(req, res) {
+  static async getListJobs(req, res) {
     try {
-      let getJobs = await Posting.findAll({});
-      res.status(200).json(getJobs);
+      let getListJobs = await axios({
+        method: "GET",
+        url: URL,
+      });
+      res.status(200).json(getListJobs.data);
+      console.log(data)
     } catch (error) {
-      res.status(400).json(error);
+      console.log(error);
     }
   }
 }

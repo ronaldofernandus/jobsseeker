@@ -10,3 +10,7 @@ userRoute.post("/login", userController.login);
 userRoute.get("/userLogin", authentication, userController.getUsersById);
 
 module.exports = userRoute;
+
+
+
+
