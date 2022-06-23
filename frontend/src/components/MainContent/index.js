@@ -19,8 +19,10 @@ const MainContent = (props) => {
         </div>
         <div className="container-fluid">
           <Routes>
-            <Route path="/" element={<Home></Home>}>
-              <Route path="positions">
+            <Route path="/" element={<Home></Home>}></Route>
+
+            <Route path="positions">
+              <Route path="detail">
                 <Route path=":id" element={<DetailJobs></DetailJobs>}></Route>
               </Route>
             </Route>

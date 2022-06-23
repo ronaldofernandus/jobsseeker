@@ -37,10 +37,7 @@ const DetailJobs = () => {
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item" aria-current="page">
-                    Paket Travel
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Details
+                    <Link to="/">Back</Link>
                   </li>
                 </ol>
               </nav>
@@ -49,9 +46,14 @@ const DetailJobs = () => {
           <div class="row">
             <div class="col-lg-8 pl-lg-0">
               <div class="card card-details">
-                <h1 value={type} onChange={(e) => setType(e.target.value)}>
-                
-                </h1>
+                <input
+                  value={type}
+                  onChange={(event) => setType(event.target.value)}
+                  type="number"
+                  className="form-control"
+                  id="customFile"
+                  name="order_subtotal"
+                />
                 <p>Republic of Indonesia Raya</p>
                 <div class="gallery">
                   <h2>Tentang Wisata</h2>
