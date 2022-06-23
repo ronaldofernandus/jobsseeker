@@ -1,5 +1,6 @@
 const axios = require("axios").default;
 const URL = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json";
+const URL1 = "http://dev3.dansmultipro.co.id/api/recruitment/";
 class jobsController {
   static async getListJobs(req, res) {
     try {
@@ -50,11 +51,11 @@ class jobsController {
       const perPage = +req.query.perPage || 5;
       let getPageJobs = await axios({
         method: "GET",
-        url: URL + "?page="+page,
+        url: URL + "?page=" + page,
       });
-   const url= URL + "?"+page
+      const url = URL + "?" + page;
 
-   console.log(url);
+      console.log(url);
       res.status(200).json(getPageJobs.data);
     } catch (error) {
       res.status(500).json(error);
@@ -63,16 +64,18 @@ class jobsController {
 
   static async getPositionById(req, res) {
     try {
-      const id = +req.params.id;
+      const id = req.params.id;
       let getPositionById = await axios({
         method: "GET",
-        url: URL + `/positions/${id}`,
+        url: URL1 + `/positions/${id}`,
       });
-
+      // const url = URL1 + `positions/${id}`;
+      // console.log(url);
       res.status(200).json(getPositionById.data);
+      // res.status(200).json("test");
     } catch (error) {
-      // console.log(error);
-      res.status(500).json(error);
+      console.log(error);
+      // res.status(500).json(error);
     }
   }
 }
