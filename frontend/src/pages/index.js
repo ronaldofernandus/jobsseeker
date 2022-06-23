@@ -1,9 +1,4 @@
 import Home from "./Home";
-import Cart from "./Cart";
-import LineItem from "./lineItem";
-import Order from "./order";
-import Product from "./Product";
-import productImage from "./productImages";
+import Jobs from "./Jobs";
 
-
-export { Home, Cart, LineItem,   Order, Product, productImage };
+export { Home, Jobs };
