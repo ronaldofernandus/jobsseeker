@@ -1,47 +1,42 @@
 const axios = require("axios").default;
-const URL = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json";
-const URL1 = "http://dev3.dansmultipro.co.id/api/recruitment/";
-class jobsController {
-  static async getListJobs(req, res) {
-    try {
-      let getListJobs = await axios({
-        method: "GET",
-        url: URL,
-      });
 
-      res.status(200).json(getListJobs.data);
-    } catch (error) {
-      res.status(500).json(error);
-    }
-  }
+const { URL } = require("url");
+
+class jobsController {
+  // static async getListJobs(req, res) {
+  //   try {
+  //     let getListJobs = await axios({
+  //       method: "GET",
+  //       url: "http://dev3.dansmultipro.co.id/api/recruitment/positions.json",
+  //     });
+
+  //     res.status(200).json(getListJobs.data);
+  //   } catch (error) {
+  //     res.status(500).json(error);
+  //   }
+  // }
 
   static async getJobsByWord(req, res) {
     try {
-      let description = req.query.description;
-      let location = req.query.location;
-      let type = req.query.type;
-      let getJobsByWord = await axios({
+      console.log("testing");
+      let frontUrl = new URL(
+        `${req.protocol}://${req.get("host")}${req.originalUrl}`
+      );
+      console.log(frontUrl);
+      var backUrl = new URL(
+        "http://dev3.dansmultipro.co.id/api/recruitment/positions.json"
+      );
+      backUrl.search = frontUrl.search;
+      console.log(backUrl);
+      let data = await axios({
         method: "GET",
-        url: URL + "?",
-        params: {
-          description: description,
-          location: location,
-          type: type,
-        },
+        url: backUrl.href,
+        timeout: 120000,
       });
-
-      res.status(200).json(getJobsByWord[(description, location, type)]);
-      // if (getJobsByWord) {
-      //   res.status(200).json(getJobsByWord);
-      // } else {
-      //   res.status(200).json({
-      //     message: "Not Found",
-      //   });
-      // }
-      // res.status(200).json(getJobsByWord.params);
+      res.status(200).json(data.data);
     } catch (error) {
-      console.log(error);
-      // res.status(500).json(error);
+      // console.log(error);
+      res.status(500).json(error);
     }
   }
 
@@ -51,7 +46,7 @@ class jobsController {
       const perPage = +req.query.perPage || 5;
       let getPageJobs = await axios({
         method: "GET",
-        url: URL + "?page=" + page,
+        url: "http://dev3.dansmultipro.co.id/api/recruitment/positions.json" + "?page=" + page,
       });
       const url = URL + "?" + page;
 
@@ -67,7 +62,7 @@ class jobsController {
       const id = req.params.id;
       let getPositionById = await axios({
         method: "GET",
-        url: URL1 + `/positions/${id}`,
+        url: "http://dev3.dansmultipro.co.id/api/recruitment/" + `/positions/${id}`,
       });
       // const url = URL1 + `positions/${id}`;
       // console.log(url);
