@@ -30,32 +30,32 @@ class jobsController {
       });
 
       res.status(200).json(getJobsByWord[(description, location, type)]);
-      if (getJobsByWord) {
-        res.status(200).json(getJobsByWord);
-      } else {
-        res.status(200).json({
-          message: "Not Found",
-        });
-      }
-      res.status(200).json(getJobsByWord.params);
+      // if (getJobsByWord) {
+      //   res.status(200).json(getJobsByWord);
+      // } else {
+      //   res.status(200).json({
+      //     message: "Not Found",
+      //   });
+      // }
+      // res.status(200).json(getJobsByWord.params);
     } catch (error) {
-      // console.log(error);
-      res.status(500).json(error);
+      console.log(error);
+      // res.status(500).json(error);
     }
   }
 
   static async getPageJobs(req, res) {
     try {
-      let page = req.query.page;
-
-      let User = await User.findAll()
-        .paginate({ page: page, limit: limit })
-        .exec();
-
-      // Return the articles to the rendering engine
-      res.render("index", {
-        User: User,
+      const page = +req.query.page || 1;
+      const perPage = +req.query.perPage || 5;
+      let getPageJobs = await axios({
+        method: "GET",
+        url: URL + "?page="+page,
       });
+   const url= URL + "?"+page
+
+   console.log(url);
+      res.status(200).json(getPageJobs.data);
     } catch (error) {
       res.status(500).json(error);
     }
