@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 import "../../index.css";
 const Navbar = (props) => {
@@ -36,12 +36,6 @@ const Navbar = (props) => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/jobs">
-                  Jobs
-                </Link>
-              </li>
-
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   Profile
