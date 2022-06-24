@@ -79,11 +79,7 @@ const DetailJobs = () => {
                   </h5>
                   <hr></hr>
                   <img
-                    src={
-                      getDetailJobsResult
-                        ? getDetailJobsResult.company_logo
-                        : "gambar kosong"
-                    }
+                    src="https://via.placeholder.com/150"
                     alt="company logo"
                   />
 
