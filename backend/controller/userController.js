@@ -5,8 +5,8 @@ const { getJwt, getVerification } = require("../helpers/jwtFile");
 class userController {
   static async getUsersById(req, res) {
     try {
-      const id = Number(req.userData.id);
-      let getUsersById = [await User.findByPk(id)];
+      const id = req.userData.id;
+      let getUsersById = await User.findByPk(id);
       res.status(200).json(getUsersById);
     } catch (error) {
       //   console.log(error);

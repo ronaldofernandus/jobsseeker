@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-
+import { useDispatch, useSelector } from "react-redux";
 import "../../index.css";
 
+import { getUser } from "../../Axios/userAxios";
+
 const Profile = () => {
+  const { profileResult, profileLoading, profileError } = useSelector(
+    (state) => state.profileReducers
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("1.start")
+    dispatch(getUser());
+  }, [dispatch]);
+
   return (
     <>
       <div className="card text-center col-8 ">
@@ -18,8 +31,13 @@ const Profile = () => {
                 />
               </div>
               <div className="col-5">
-                <h4 style={{ textAlign: "left" }}>Nama Kandidat</h4>
-                <p style={{ textAlign: "left" }}>Email</p>
+                <h4 style={{ textAlign: "left" }}>
+                  {profileResult ? profileResult.username : "USername kosong"}
+                </h4>
+                <p style={{ textAlign: "left" }}>
+                  {" "}
+                  {profileResult ? profileResult.email : "USername kosong"}
+                </p>
               </div>
             </div>
           </div>

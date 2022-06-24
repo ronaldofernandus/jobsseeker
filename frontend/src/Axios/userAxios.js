@@ -1,16 +1,49 @@
 import axios from "axios";
-const URL = "http://localhost:4000/user";
 
-const getUser = async (cb) => {
-  try {
-    let getUser = await axios({
-      method: "GET",
-      url: URL,
+export const profile = "profile";
+
+export const getUser = () => {
+  console.log("2.Masuk")
+  const get_token = localStorage.getItem("get_token");
+  return (dispatch) => {
+    dispatch({
+      type: "profile",
+      payload: {
+        loading: false,
+        data: false,
+        errorMessage: false,
+      },
     });
-    cb(getUser);
-  } catch (error) {
-    console.log(error);
-  }
-};
+    axios({
+      method: "GET",
+      url: "http://localhost:4000/user/userLogin",
+      timeout: 120000,
 
-export { getUser };
+      headers: {
+        get_token: get_token,
+      },
+    })
+      .then((response) => {
+        console.log("3.Respone",response.data);
+        dispatch({
+          type: "profile",
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: false,
+          },
+        });
+      })
+      .catch((error) => {
+        console.log("4.Respone",error.message);
+        dispatch({
+          type: "profile",
+          payload: {
+            loading: false,
+            data: false,
+            errorMessage: error.message,
+          },
+        });
+      });
+  };
+};

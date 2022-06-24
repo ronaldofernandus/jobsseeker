@@ -3,19 +3,7 @@ const axios = require("axios").default;
 const { URL } = require("url");
 
 class jobsController {
-  // static async getListJobs(req, res) {
-  //   try {
-  //     let getListJobs = await axios({
-  //       method: "GET",
-  //       url: "http://dev3.dansmultipro.co.id/api/recruitment/positions.json",
-  //     });
-
-  //     res.status(200).json(getListJobs.data);
-  //   } catch (error) {
-  //     res.status(500).json(error);
-  //   }
-  // }
-
+ 
   static async getJobsByWord(req, res) {
     try {
       console.log("testing");

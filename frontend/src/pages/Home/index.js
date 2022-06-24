@@ -5,29 +5,40 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { getListAllJobs, getDetailJobsById } from "../../Axios/homeAxios";
+import { getListAllJobs, getDetailJobsById,getPageJobs } from "../../Axios/homeAxios";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { getListJobsResult, getListJobsLoading, getListJobsError } =
-    useSelector((state) => state.homeReducers);
+  const {
+    getListJobsResult,
+    getListJobsLoading,
+    getListJobsError,
+    getPageResult,
+    getPageLoading,
+    getPageError,
+  } = useSelector((state) => state.homeReducers);
 
   useEffect(() => {
     dispatch(getListAllJobs());
   }, [dispatch]);
 
+
+  useEffect(() => {
+    dispatch(getPageJobs());
+  }, [dispatch]);
+
   return (
     <>
       <section className="section-details-content">
+        <div className=" container d-flex">
+          <input
+            className=" search form-control me-1"
+            type="search"
+            placeholder="Search by Description,Location,or Type"
+            aria-label="Search"
+          />
+        </div>
         <div className="container">
-          <div className=" d-flex">
-            <input
-              className=" search form-control me-1"
-              type="search"
-              placeholder="Search by Description,Location,or Type"
-              aria-label="Search"
-            />
-          </div>
           <div className="row">
             <div className="col-lg-8 pl-lg-0">
               <div className="card card-details">
@@ -73,6 +84,35 @@ const Home = () => {
                 )}
               </div>
             </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">
+                    {getPageResult}
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">
+                  {getPageResult}
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">
+                  {getPageResult}
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </section>
