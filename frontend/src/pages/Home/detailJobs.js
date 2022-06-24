@@ -4,7 +4,7 @@ import "../../index.css";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-
+import parse from "html-react-parser";
 import { getListAllJobs, getDetailJobsById } from "../../Axios/homeAxios";
 
 const DetailJobs = () => {
@@ -54,13 +54,16 @@ const DetailJobs = () => {
                     ? getDetailJobsResult.title
                     : "title kosong"}
                 </h1>
-
+                <hr></hr>
                 <div className="gallery">
-                  <h2>Description</h2>
                   <p>
-                    {getDetailJobsResult
-                      ? getDetailJobsResult.description
-                      : "Deskripsi kosong"}
+                    {parse(
+                      ` ${
+                        getDetailJobsResult
+                          ? getDetailJobsResult.description
+                          : "Company kosong"
+                      }`
+                    )}
                   </p>
                 </div>
               </div>
@@ -76,22 +79,33 @@ const DetailJobs = () => {
                   </h5>
                   <hr></hr>
                   <img
-                    src="https://via.placeholder.com/150"
-                    class="card-img-top"
-                    alt="..."
+                    src={
+                      getDetailJobsResult
+                        ? getDetailJobsResult.company_logo
+                        : "gambar kosong"
+                    }
+                    alt="company logo"
                   />
 
                   <p>
                     {getDetailJobsResult
                       ? getDetailJobsResult.company_url
-                      : "Company kosong"}
+                      : "url kosong"}
                   </p>
                 </div>
               </div>
               <div class="card" style={{ width: "18rem" }}>
                 <div class="card-body">
                   <h5 class="card-title">How to Apply</h5>
-                  <p class="card-text">{getDetailJobsResult.how_to_apply}</p>
+                  <p class="card-text">
+                    {parse(
+                      `${
+                        getDetailJobsResult
+                          ? getDetailJobsResult.how_to_apply
+                          : "Kosong"
+                      }`
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
