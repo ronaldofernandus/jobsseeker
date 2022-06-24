@@ -41,7 +41,7 @@ const Home = () => {
             }}
             className=" search form-control me-1"
             type="search"
-            placeholder="Search by Description,Location,or Type"
+            placeholder="Search by Title,Location,or Type"
             aria-label="Search"
           />
         </div>
@@ -60,6 +60,18 @@ const Home = () => {
                         job.location
                           .toLowerCase()
                           .includes(search.toLowerCase())
+                      ) {
+                        return job;
+                      } else if (
+                        job.company.toLowerCase().includes(search.toLowerCase())
+                      ) {
+                        return job;
+                      } else if (
+                        job.title.toLowerCase().includes(search.toLowerCase())
+                      ) {
+                        return job;
+                      } else if (
+                        job.type.toLowerCase().includes(search.toLowerCase())
                       ) {
                         return job;
                       }
