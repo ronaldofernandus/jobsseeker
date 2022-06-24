@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const jobs = (state = initialState, action) => {
-  console.log("4.Reducers");
   switch (action.type) {
     case profile:
       return {

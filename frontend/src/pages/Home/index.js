@@ -60,6 +60,7 @@ const Home = () => {
                 <h1>Job List</h1>
                 <hr></hr>
                 {getListJobsResult ? (
+                  console.log(getListJobsResult),
                   getListJobsResult
                     .filter((job) => {
                       if (search === "") {
@@ -84,6 +85,8 @@ const Home = () => {
                         return job;
                       }
                     })
+
+                    .slice()
 
                     .map((job) => {
                       // console.log(getListJobsResult);
