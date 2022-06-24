@@ -109,7 +109,7 @@ const Login = (props) => {
                 <div>
                   <p className="mb-0">
                     Don't have an account?{" "}
-                    <Link to="/!" className="text-white-50 fw-bold">
+                    <Link to="/register" className="text-white-50 fw-bold">
                       Sign Up
                     </Link>
                   </p>

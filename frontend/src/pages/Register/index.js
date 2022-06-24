@@ -7,23 +7,21 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import { image2 } from "../Register/images/index";
+
 const Register = () => {
   const [input, setInput] = useState({
-    user_name: "",
-    user_email: "",
-    user_password: "",
-    user_salt: "",
-    user_birthdate: "",
-    user_gender: "",
-    // user_avatar: "",
-    user_type: "",
+    photoProfile: "",
+    email: "",
+    username: "",
+    password: "",
   });
 
   const registrasiUser = async () => {
     try {
       let registrasiUser = await axios({
         method: "POST",
-        url: "http://localhost:3000/user/register",
+        url: "http://localhost:4000/user/register",
         data: input,
       });
       Swal.fire({
@@ -46,89 +44,79 @@ const Register = () => {
     // navigate("/login");
   };
   return (
-    <div className="main-page">
-      <div className="left">
-        <img src={register} className="bg-image" alt="imageBg" />
-      </div>
-      <div className="right">
-        <p className="title"> Register</p>
+    <>
+      <section className="signup">
+        <div className="container">
+          <div className="signup-content">
+            <div className="signup-form">
+              <h2 className="form-title">Sign up</h2>
 
-        <Input
-          type="text"
-          onChange={(e) => setInput({ ...input, user_name: e.target.value })}
-          placeholder="Nama pengguna"
-          name=""
-          className="form-control"
-        />
-        <Input
-          type="email"
-          onChange={(e) => setInput({ ...input, user_email: e.target.value })}
-          placeholder="Email"
-          name="user_email"
-          className="form-control"
-        />
-        <Input
-          type="password"
-          onChange={(e) =>
-            setInput({ ...input, user_password: e.target.value })
-          }
-          placeholder="Password"
-          name="user_password"
-          className="form-control"
-        />
+              <div className="form-group">
+                <label for="email">
+                  <i className="zmdi zmdi-account material-icons-name"></i>
+                </label>
+                <input
+                  onChange={(e) =>
+                    setInput({ ...input, email: e.target.value })
+                  }
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="Please insert email"
+                />
+              </div>
+              <div className="form-group">
+                <label for="username">
+                  <i className="zmdi zmdi-email"></i>
+                </label>
+                <input
+                  onChange={(e) =>
+                    setInput({ ...input, username: e.target.value })
+                  }
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Please insert username"
+                />
+              </div>
+              <div className="form-group">
+                <label for="password">
+                  <i className="zmdi zmdi-email"></i>
+                </label>
+                <input
+                  onChange={(e) =>
+                    setInput({ ...input, password: e.target.value })
+                  }
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Please insert password"
+                />
+              </div>
 
-        <Input
-          type="text"
-          onChange={(e) => setInput({ ...input, user_salt: e.target.value })}
-          placeholder="Salt"
-          name="user_salt"
-          className="form-control"
-        />
-
-        <Input
-          type="date"
-          onChange={(e) =>
-            setInput({ ...input, user_birthdate: e.target.value })
-          }
-          placeholder="Tanggal/Bulan/Tahun"
-          name="user_birthdate"
-          className="form-control"
-        />
-
-        <Input
-          type="text"
-          onChange={(e) => setInput({ ...input, user_gender: e.target.value })}
-          placeholder="Gender"
-          name="user_gender"
-          className="form-control"
-        />
-
-        <Input
-          type="text"
-          onChange={(e) => setInput({ ...input, user_type: e.target.value })}
-          placeholder="Role/Type"
-          name="user_type"
-          className="form-control"
-        />
-
-        <Button title="Register" onClick={() => registrasiHandler()} />
-        <Gap height={100} />
-        <div className="w-100 text-center mt-4 text">
-          <p className="mb-0">Do have an account?</p>
-          <Link
-            style={{
-              color: "red",
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-            }}
-            to="/"
-          >
-            Login
-          </Link>
+              <div className="form-group form-button">
+                <input
+                  onClick={() => registrasiHandler()}
+                  type="submit"
+                  name="signup"
+                  id="signup"
+                  className="form-submit"
+                  value="Register"
+                />
+              </div>
+            </div>
+            <div className="signup-image">
+              <figure>
+                <img src={image2} alt="sing up image" />
+              </figure>
+              <Link to="/login" className="signup-image-link">
+                I am already member
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
