@@ -13,6 +13,7 @@ import {
 import ReactPaginate from "react-paginate";
 const Home = () => {
   const dispatch = useDispatch();
+
   const [search, setSearch] = useState("");
   const [currentPage, setcurrentPage] = useState(1);
 
@@ -26,10 +27,6 @@ const Home = () => {
     getPageLoading,
     getPageError,
   } = useSelector((state) => state.homeReducers);
-
-  const pageVisit1 = currentPage * postPerPage;
-
-  const pageVisit2 = pageVisit1 - postPerPage;
 
   useEffect(() => {
     dispatch(getListAllJobs());
@@ -60,7 +57,6 @@ const Home = () => {
                 <h1>Job List</h1>
                 <hr></hr>
                 {getListJobsResult ? (
-                  console.log(getListJobsResult),
                   getListJobsResult
                     .filter((job) => {
                       if (search === "") {
