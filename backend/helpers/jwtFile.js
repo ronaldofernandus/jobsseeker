@@ -12,7 +12,7 @@ const getJwt = (data) => {
     },
     secretCode,
     {
-      expiresIn: "1h",
+      expiresIn: "24h",
     }
   );
 };

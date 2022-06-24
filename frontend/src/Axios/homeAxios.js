@@ -46,60 +46,45 @@ export const getListAllJobs = () => {
   };
 };
 
-// export const getDetailJobsById = (data,id) => {
-//   const get_token = localStorage.getItem("get_token");
-//   return (dispatch) => {
-//     dispatch({
-//       type: "getDetailJobs",
-//       payload: {
-//         loading: false,
-//         data: false,
-//         errorMessage: false,
-//       },
-//     });
-//     axios({
-//       method: "GET",
-//       url: `http://localhost:4000/positions/${id}`,
-//       timeout: 120000,
-
-//       headers: {
-//         get_token: get_token,
-//       },
-//     })
-//       .then((response) => {
-//         dispatch({
-//           type: "getDetailJobs",
-//           payload: {
-//             loading: false,
-//             data: response.data,
-//             errorMessage: false,
-//           },
-//         });
-//       })
-//       .catch((error) => {
-//         dispatch({
-//           type: "getDetailJobs",
-//           payload: {
-//             loading: false,
-//             data: false,
-//             errorMessage: error.message,
-//           },
-//         });
-//       });
-//   };
-// };
-
-export const getDetailJobsById = (data, id) => {
+export const getDetailJobsById = (id) => {
   const get_token = localStorage.getItem("get_token");
   return (dispatch) => {
     dispatch({
       type: "getDetailJobs",
       payload: {
-        data: data,
+        loading: false,
+        data: false,
+        errorMessage: false,
       },
+    });
+    axios({
+      method: "GET",
+      url: `http://localhost:4000/positions/${id}`,
+      timeout: 120000,
+
       headers: {
         get_token: get_token,
       },
-    });
+    })
+      .then((response) => {
+        dispatch({
+          type: "getDetailJobs",
+          payload: {
+            loading: false,
+            data: response.data,
+            errorMessage: false,
+          },
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: "getDetailJobs",
+          payload: {
+            loading: false,
+            data: false,
+            errorMessage: error.message,
+          },
+        });
+      });
   };
 };

@@ -5,6 +5,8 @@ const initialState = {
   getListJobsError: false,
 
   getDetailJobsResult: false,
+  getDetailJobsLoading: false,
+  getDetailJobsError: false,
  
 };
 
@@ -22,6 +24,8 @@ const jobs = (state = initialState, action) => {
       return {
         ...state,
         getDetailJobsResult: action.payload.data,
+        getDetailJobsLoading: action.payload.loading,
+        getDetailJobsError: action.payload.errorMessage,
  
       };
 
