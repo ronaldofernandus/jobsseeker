@@ -8,7 +8,7 @@ const upload = require("../middleware/multer");
 userRoute.get("/", userController.getUsers);
 userRoute.post(
   "/register",
-  upload.single("image"),
+  upload.single("photoProfile"),
 
   userController.register
 );

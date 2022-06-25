@@ -22,7 +22,7 @@ const Home = () => {
   const indexOfLastEmployee = currentPage * postPerPage;
   const indexOfFirstEmployee = indexOfLastEmployee - postPerPage;
 
-  const pageNumber = [];
+  const paginate = (pageNumber) => setcurrentPage(pageNumber);
 
   const {
     getListJobsResult,
@@ -32,6 +32,12 @@ const Home = () => {
     getPageLoading,
     getPageError,
   } = useSelector((state) => state.homeReducers);
+
+  const pageNumber = [];
+
+  for (let i = 1; i <= Math.ceil(getPageResult.length / postPerPage); i++) {
+    pageNumber.push(i);
+  }
 
   useEffect(() => {
     dispatch(getListAllJobs());
@@ -62,7 +68,7 @@ const Home = () => {
                 <h1>Job List</h1>
                 <hr></hr>
                 {getListJobsResult ? (
-                  (getListJobsResult
+                  getListJobsResult
                     .filter((job) => {
                       if (search === "") {
                         return job;
@@ -88,10 +94,9 @@ const Home = () => {
                     })
 
                     .slice(indexOfFirstEmployee, indexOfLastEmployee)
-                  // Math.ceil(getListJobsResult.length / postPerPage)
-                  
-                  .map(
-                    (job) => {
+                    // Math.ceil(getListJobsResult.length / postPerPage)
+
+                    .map((job) => {
                       // console.log(getListJobsResult);
                       return (
                         <>
@@ -127,8 +132,7 @@ const Home = () => {
                           <hr></hr>
                         </>
                       );
-                    }
-                  ))
+                    })
                 ) : getListJobsLoading ? (
                   <p>Loading...</p>
                 ) : (
@@ -138,32 +142,31 @@ const Home = () => {
             </div>
 
             <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    1
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
+              <ul className="pagination">
+                {console.log(pageNumber)}
+                {pageNumber.map((page) => {
+                  <>
+                    <li className="page-item">
+                      <a className="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <li className="page-item" key={page}>
+                      <a
+                        onClick={() => paginate(page)}
+                        className="page-link"
+                        href=""
+                      >
+                        {page}
+                      </a>
+                      <li className="page-item">
+                        <a className="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </li>
+                  </>;
+                })}
               </ul>
             </nav>
           </div>
