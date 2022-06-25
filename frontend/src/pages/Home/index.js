@@ -23,6 +23,7 @@ const Home = () => {
   const indexOfFirstEmployee = indexOfLastEmployee - postPerPage;
 
   const paginate = (pageNumber) => setcurrentPage(pageNumber);
+  
 
   const {
     getListJobsResult,
