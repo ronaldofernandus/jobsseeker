@@ -35,7 +35,7 @@ const Home = () => {
 
   const pageNumber = [];
 
-  for (let i = 1; i <= Math.ceil(getPageResult.length / postPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(getListJobsResult.length / postPerPage); i++) {
     pageNumber.push(i);
   }
 
@@ -141,16 +141,11 @@ const Home = () => {
               </div>
             </div>
 
-            <nav aria-label="Page navigation example">
+            {/* <nav aria-label="Page navigation example">
               <ul className="pagination">
                 {console.log(pageNumber)}
                 {pageNumber.map((page) => {
                   <>
-                    <li className="page-item">
-                      <a className="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
                     <li className="page-item" key={page}>
                       <a
                         onClick={() => paginate(page)}
@@ -159,14 +154,23 @@ const Home = () => {
                       >
                         {page}
                       </a>
-                      <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
                     </li>
                   </>;
                 })}
+              </ul>
+            </nav> */}
+             <nav aria-label="Page navigation example">
+              <ul className="pagination">
+              <li className="page-item" >
+                      <a
+                        
+                        className="page-link"
+                        href=""
+                      >
+                        1
+                      </a>
+                    </li>
+               
               </ul>
             </nav>
           </div>

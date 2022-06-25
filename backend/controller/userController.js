@@ -27,9 +27,8 @@ class userController {
   static async register(req, res) {
     try {
       const { email, username, password } = req.body;
-
-      const { photoProfile } = req.file;
-      console.log(req.file);
+      const {photoProfile} = req.file;
+console.log(req.file)
       let register = await User.create({
         photoProfile,
         email,
