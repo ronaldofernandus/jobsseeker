@@ -17,7 +17,7 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [currentPage, setcurrentPage] = useState(1);
 
-  const [postPerPage, setPostPerPage] = useState(3);
+  const [postPerPage, setPostPerPage] = useState(7);
 
   const indexOfLastEmployee = currentPage * postPerPage;
   const indexOfFirstEmployee = indexOfLastEmployee-postPerPage;
