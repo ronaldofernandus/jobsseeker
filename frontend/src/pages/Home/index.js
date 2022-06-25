@@ -141,36 +141,23 @@ const Home = () => {
               </div>
             </div>
 
-            {/* <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example">
               <ul className="pagination">
-                {console.log(pageNumber)}
                 {pageNumber.map((page) => {
-                  <>
-                    <li className="page-item" key={page}>
-                      <a
-                        onClick={() => paginate(page)}
-                        className="page-link"
-                        href=""
-                      >
-                        {page}
-                      </a>
-                    </li>
-                  </>;
+                  return (
+                    <>
+                      <li className="page-item" key={page}>
+                        <a
+                          onClick={() => paginate(page)}
+                          className="page-link"
+                          href=""
+                        >
+                          {page}
+                        </a>
+                      </li>
+                    </>
+                  );
                 })}
-              </ul>
-            </nav> */}
-             <nav aria-label="Page navigation example">
-              <ul className="pagination">
-              <li className="page-item" >
-                      <a
-                        
-                        className="page-link"
-                        href=""
-                      >
-                        1
-                      </a>
-                    </li>
-               
               </ul>
             </nav>
           </div>
