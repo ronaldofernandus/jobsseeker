@@ -148,13 +148,13 @@ const Home = () => {
                   return (
                     <>
                       <li className="page-item" key={page}>
-                        <a
+                        <button
                           onClick={() => paginate(page)}
                           className="page-link"
                           href=""
                         >
                           {page}
-                        </a>
+                        </button>
                       </li>
                     </>
                   );
